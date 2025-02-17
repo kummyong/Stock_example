@@ -6,6 +6,29 @@ from tqdm import tqdm
 
 
 class StockDataHandler:
+    """
+    StockDataHandler 클래스는 주식 데이터를 처리하고 저장하는 기능을 제공합니다.
+    Attributes:
+        db_name (str): SQLite 데이터베이스 파일 이름.
+    Methods:
+        __init__(db_name="stock_data.db"):
+            StockDataHandler 인스턴스를 초기화하고, 주식 데이터 테이블을 생성합니다.
+        create_saving_stock_data_table():
+            주식 데이터를 저장할 테이블을 생성합니다.
+        truncate_stock_data_table():
+            주식 데이터 테이블의 모든 데이터를 삭제합니다.
+        read_stock_data(symbol, start_date, end_date):
+            주어진 주식 심볼과 기간에 해당하는 주식 데이터를 읽어옵니다.
+        get_korean_stock_symbols():
+            한국 주식 심볼 목록을 가져옵니다.
+        save_stock_data_for_period(start_date, end_date):
+            주어진 기간 동안 모든 한국 주식 심볼에 대한 주식 데이터를 저장합니다.
+        save_stock_data_for_symbol(name, code, start_date, end_date):
+            주어진 주식 심볼과 기간에 해당하는 주식 데이터를 저장합니다.
+        fetch_stock_data_from_db(code, start_date, end_date):
+            데이터베이스에서 주어진 주식 심볼과 기간에 해당하는 주식 데이터를 가져옵니다.
+    """
+
     def __init__(self, db_name="stock_data.db"):
         self.db_name = db_name
         self.create_saving_stock_data_table()
